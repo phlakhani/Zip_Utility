@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Zip & unZip Files" icon-name="utility:archive">
+
+        <div class="slds-p-around_medium">
+            <lightning-file-upload 
+                label="Upload Files/ZIP"
+                name="fileUploader"
+                accept={acceptedFormats}
+                onuploadfinished={handleUpload}
+                multiple>
+            </lightning-file-upload>
+
+            <!-- Show Uploaded File Names -->
+            <template if:true={uploadedFileNames.length}>
+                <div class="slds-m-top_small">
+                    <p class="slds-text-heading_small slds-m-bottom_xx-small">Uploaded files:</p>
+                    <ul class="slds-list_dotted">
+                        <template for:each={numberedFileNames} for:item="displayName">
+                            <p key={displayName}>{displayName}</p>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="slds-m-top_medium slds-p-around_medium">
+            <lightning-button label="Extract ZIP" onclick={handleExtract} disabled={isExtractDisabled} class="slds-m-auto slds-m-right_small"></lightning-button>
+            <lightning-button label="Compress Files" onclick={handleCompress} disabled={isCompressDisabled} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="Download All" onclick={handleDownloadAll} disabled={isDownloadDisabled} class="slds-m-right_small"></lightning-button>
+        </div>
+
+
+        <!-- Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-m-top_medium slds-align_absolute-center">
+                <lightning-spinner alternative-text="Processing..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Download Files from Table -->
+        <template if:true={fileList.length}>
+            <lightning-datatable
+                key-field="id"
+                data={fileList}
+                columns={columns}
+                hide-checkbox-column
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>
