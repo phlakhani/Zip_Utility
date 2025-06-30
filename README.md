@@ -9,13 +9,3 @@ In Salesforce, Now you can Zip & unZip files within Salesforce itself using this
   </p>
 
 
-## Deploy This Zip Utility into your Sandbox & start using it right away !
-
-<div align="center" dir="auto">
-  <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5e0000012JC3&isdtp=p" rel="nofollow">
-    <img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png" alt="Deploy to Salesforce" style="max-width: 100%;">
-  </a>
-</div>
-
-Click on above button, login to your org, on Installation screen,  Select **Install for Admins Only** & Click on Install.  
-After Installation, In your Org, Go to lightning page (home page or record page) where you want to add this Zip utility and add it and save.  
